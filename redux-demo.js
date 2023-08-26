@@ -8,6 +8,18 @@ const conterReducer = (state=initialState,action)=>{
             counter : state.counter +1
         }
     }
+    if(action.type==="incrementBy2"){
+        return {
+            ...state,
+            counter :state.counter +2
+        }
+    }
+    if(action.type==="decrementBy2"){
+        return {
+            ...state,
+            counter :state.counter -2
+        }
+    }
     if(action.type==="decrement"){
         return {
             ...state,
@@ -26,11 +38,9 @@ const conetrSubscriber =()=>{
 
 store.subscribe(conetrSubscriber)
 
-for(let i=0;i<5;i++){
-    store.dispatch({type:"increment"})
-}
 
-for(let i=0;i<3;i++)
-{
-    store.dispatch({type:'decrement'})
-}
+
+store.dispatch({type:"increment"})
+store.dispatch({type:'decrement'})
+store.dispatch({type:"incrementBy2"})
+store.dispatch({type:'decrementBy2'})
